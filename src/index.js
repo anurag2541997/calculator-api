@@ -45,7 +45,7 @@ app.route('/sub').post((req,res)=>{
     const {num1,num2}=req.body
     if(typeof (num1)=="string" || typeof (num2)==="string"){
         return res.json({
-            message: "invalid data types"
+            message: "Invalid data types"
         })
     }
     const sum=parseFloat(num1)-parseFloat(num2);
