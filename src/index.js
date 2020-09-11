@@ -12,8 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 // your code goes here
-
-// here
+app.route('/').get((req,res)=>{
+    return res.json("Hello World!")
+})
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
