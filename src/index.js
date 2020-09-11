@@ -91,7 +91,7 @@ app.route('/division').post((req,res)=>{
     }    
     return res.json({
         status: "success/failure/error"
-        message: "the sum of given two number",
+        message: "the division of given two number",
         sum: parseFloat(num1)/parseFloat(num2)
     })
 
