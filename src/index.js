@@ -39,7 +39,6 @@ app.route('/add').post((req,res)=>{
         message: "the sum of given two numbers",
         sum: parseFloat(num1)+parseFloat(num2)
     })
-}
 })
 //Subtraction
 app.route('/sub').post((req,res)=>{
