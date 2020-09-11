@@ -23,7 +23,7 @@ app.route('/add').post((req,res)=>{
     if(typeof(num1)=="string" || typeof (num2)=="string")
     {
         return res.json({
-            message : "invalid data types"
+            message : "Invalid data types"
         })
     }
     let sum=parseFloat(num1)+parseFloat(num2)
@@ -48,8 +48,8 @@ app.route('/sub').post((req,res)=>{
             message: "Invalid data types"
         })
     }
-    const sum=parseFloat(num1)-parseFloat(num2);
-    if(num1 >1000000 || num2 > 1000000 || sum > 1000000   ){
+    //const sum=parseFloat(num1)-parseFloat(num2);
+    if(num1 <1000000 || num2 < 1000000){
         return res.json({
             message: "Underflow"
         })
@@ -57,7 +57,7 @@ app.route('/sub').post((req,res)=>{
     return res.json({
         status: "success/failure/error",
         message: "the difference of given two numbers",
-        sum: parseFloat(num1)- parseFloat(num2)
+        difference: parseFloat(num1)- parseFloat(num2)
     })
 })
 //Multiply
@@ -68,8 +68,8 @@ app.route('/multiply').post((req,res)=>{
             message: "Invalid data types"
         })
     }
-    const sum=parseFloat(num1)*parseFloat(num2);
-    if(num1 >1000000 || num2 > 1000000 || sum > 1000000){
+   const prod=parseFloat(num1)*parseFloat(num2);
+    if(num1 >1000000 || num2 > 1000000){
         return res.json({
             message: "Overflow"
 
@@ -78,7 +78,7 @@ app.route('/multiply').post((req,res)=>{
     return res.json({
         status: "success/failure/error",
         message: "The product of given numbers",
-        sum: sum
+        result: prod
     })
 })
 //Division
@@ -91,8 +91,8 @@ app.route('/division').post((req,res)=>{
     }    
     return res.json({
         status: "success/failure/error",
-        message: "the division of given two number",
-        sum: parseFloat(num1)/parseFloat(num2)
+        message: "The division of given numbers",
+        result: parseFloat(num1)/parseFloat(num2)
     })
 
 })
