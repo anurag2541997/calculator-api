@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require("body-parser");
-const port = 3003
+const port = 3005
 app.use(express.urlencoded());
 
 // Parse JSON bodies (as sent by API clients)
@@ -53,7 +53,7 @@ app.route('/sub').post((req,res)=>{
         })
     }
     const sum=parseFloat(num1)-parseFloat(num2);
-    if((!(isFloat(num1)) && !isFloat(num2)) && (num1<0 || num2 < 0 || sum <0)){
+    if((!(isFloat(num1)) && !isFloat(num2)) && (num1<0 || num2 < 0) && sum <0){
         return res.json({
             message: "Underflow"
         })
