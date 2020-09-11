@@ -15,6 +15,9 @@ app.use(bodyParser.json())
 app.route('/').get((req,res)=>{
     return res.json("Hello World!")
 })
+function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
 
 //Addition
 
@@ -43,13 +46,14 @@ app.route('/add').post((req,res)=>{
 //Subtraction
 app.route('/sub').post((req,res)=>{
     const {num1,num2}=req.body
+    
     if(typeof (num1)=="string" || typeof (num2)==="string"){
         return res.json({
             message: "Invalid data types"
         })
     }
-    //const sum=parseFloat(num1)-parseFloat(num2);
-    if(num1 <1000000 && num2 < 1000000){
+    const sum=parseFloat(num1)-parseFloat(num2);
+    if((!(isFloat(num1)) && !isFloat(num2)) && num1 <1000000 && num2 < 1000000 && sum < 1000000){
         return res.json({
             message: "Underflow"
         })
@@ -69,7 +73,7 @@ app.route('/multiply').post((req,res)=>{
         })
     }
    const prod=parseFloat(num1)*parseFloat(num2);
-    if(num1 >1000000 || num2 > 1000000){
+    if(num1 >1000000 || num2 > 1000000 || prod>1000000){
         return res.json({
             message: "Overflow"
 
@@ -82,7 +86,7 @@ app.route('/multiply').post((req,res)=>{
     })
 })
 //Division
-app.route('/division').post((req,res)=>{
+app.route('/divide').post((req,res)=>{
 	const {num1,num2}=req.body
     if(num2===0){
         return res.json({
